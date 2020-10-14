@@ -84,4 +84,33 @@ describe('My first test suite', () => {
 
         cy.url().should('include', 'forms/layout')
     })
+
+    // Case 4 Form without labels
+    it('four test', () => {
+        cy.visit('/')
+        cy.contains('Forms').click() // contaist luarnya
+        cy.contains('Form Layouts').click()
+
+        // constains disini harus sama besar kecilnya huruf
+        cy.contains('nb-card', 'Form without labels')
+            .find('[placeholder="Recipients"]')
+            .click()
+            .type("septiandareza07@gmail.com")
+
+        cy.contains('nb-card', 'Form without labels')
+            .find('[placeholder="Subject"]')
+            .click()
+            .type("Tugas PPL menggunakan testing cypress")
+
+        cy.contains('nb-card', 'Form without labels')
+            .find('[placeholder="Message"]')
+            .click()
+            .type("Silahkan install cypress terlebih dahulu")
+
+        cy.contains('nb-card', 'Form without labels')
+            .find('[type="submit"]')
+            .click()
+
+        cy.url().should('include', 'forms/layout')
+    })
 })
