@@ -4,8 +4,8 @@ describe('My first test suite', () => {
     // Case 1 Inline form
     it('first test', () => {
         cy.visit('/')
-        cy.contains('Forms').click();
-        cy.contains('Form Layouts').click()
+        cy.contains('Forms').click() // containst luarnya
+        cy.contains('Form Layouts').click() 
 
         cy.contains('nb-card', 'Inline form')
             .find('[placeholder="Jane Doe"]')
@@ -31,7 +31,7 @@ describe('My first test suite', () => {
     // Case 2 Using the Grid
     it('second test', () => {
         cy.visit('/')
-        cy.contains('Forms').click();
+        cy.contains('Forms').click() // containst luarnya
         cy.contains('Form Layouts').click()
 
         //contains disini harus sama besar kecilnya huruf
@@ -52,6 +52,33 @@ describe('My first test suite', () => {
             .click()
 
         cy.contains('nb-card', 'Using the Grid')
+            .find('[type="submit"]')
+            .click()
+
+        cy.url().should('include', 'forms/layout')
+    })
+
+    // Case 3 Basic Form
+    it('third test', () => {
+        cy.visit('/')
+        cy.contains('Forms').click() // containst luarnya
+        cy.contains('Form Layouts').click()
+
+        //contains disini harus sama besar kecilnya huruf
+        cy.contains('nb-card', 'Basic form')
+            .find('[placeholder="Email"]')
+            .click()
+            .type("septiandareza07@gmail.com")
+
+        cy.get('#exampleInputPassword1')
+            .click()
+            .type("septianda12")
+
+        cy.contains('nb-card', 'Basic form')
+            .find('.custom-checkbox')
+            .click()
+
+        cy.contains('nb-card', 'Basic form')
             .find('[type="submit"]')
             .click()
 
