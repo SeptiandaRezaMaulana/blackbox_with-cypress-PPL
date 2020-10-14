@@ -113,4 +113,36 @@ describe('My first test suite', () => {
 
         cy.url().should('include', 'forms/layout')
     })
+
+    // Case 5 Block Form
+    it('five test', () => {
+        cy.visit('/')
+        cy.contains('Forms').click() // contaist luarnya
+        cy.contains('Form Layouts').click()
+
+        // constains disini harus sama besar kecilnya huruf
+        cy.contains('nb-card', 'Block form')
+            .find('[placeholder="First Name"]')
+            .click()
+            .type("Septianda Reza")
+        
+        cy.contains('nb-card', 'Block form')
+            .find('[placeholder="Last Name"]')
+            .click()
+            .type("Maulana")
+        
+        cy.get('#inputEmail')
+            .click()
+            .type("septiandareza07@gmail.com")
+
+        cy.get('#inputWebsite')
+            .click()
+            .type("septiandareza15.blogspot.com")
+
+        cy.contains('nb-card', 'Block form')
+            .find('[type="submit"]')
+            .click()
+
+        cy.url().should('include', 'forms/layout')
+    })
 })
