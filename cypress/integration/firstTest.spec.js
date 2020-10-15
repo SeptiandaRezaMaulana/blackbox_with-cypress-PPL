@@ -145,4 +145,29 @@ describe('My first test suite', () => {
 
         cy.url().should('include', 'forms/layout')
     })
+
+    // Case 6 Horizontal form
+    it('six test', () => {
+        cy.visit('/')
+        cy.contains('Forms').click() // contaist luarnya
+        cy.contains('Form Layouts').click()
+
+        cy.get('#inputEmail3')
+            .click()
+            .type("septiandareza07@gmail.com")
+        
+        cy.get('#inputPassword3')
+            .click()
+            .type("septianda12")
+
+        cy.contains('nb-card', 'Horizontal form')
+            .find('.custom-checkbox')
+            .click()
+
+        cy.contains('nb-card', 'Horizontal form')
+            .find('[type="submit"]')
+            .click()
+
+        cy.url().should('include', 'forms/layout')
+    })
 })
